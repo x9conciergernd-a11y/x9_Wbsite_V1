@@ -108,17 +108,22 @@ export default function Services() {
           </div>
 
           {/* CTA */}
-          <div className="max-w-2xl mx-auto text-center mt-20">
-            <p className="text-lg text-muted-foreground mb-8">
-              Ready to delegate and reclaim your time?
-            </p>
-            <Button asChild variant="premium" size="xl">
-              <Link to="/contact">
-                Request Access
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
+<div className="max-w-2xl mx-auto text-center mt-20">
+  <p className="text-lg text-muted-foreground mb-8">
+    Ready to delegate and reclaim your time?
+  </p>
+  <a 
+    href="https://wa.me/919633540152?text=Hi%2C%20I%27m%20ready%20to%20request%20access%20to%20X9" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <Button variant="premium" size="xl" className="group">
+      Request Access
+      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+    </Button>
+  </a>
+</div>
+
         </div>
       </section>
     </Layout>

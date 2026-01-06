@@ -20,8 +20,15 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link to="/" className="text-3xl font-semibold tracking-tight">
-              X9
-            </Link>
+  <img
+    src="/footerlogo.png"
+    alt="Logo"
+    style={{
+      width: "32px",
+      height: "auto",
+      objectFit: "contain",
+    }}
+  />            </Link>
             <p className="mt-4 text-primary-foreground/70 max-w-sm leading-relaxed">
               Your personal assistant for everything that matters. Delegate the details, focus on what counts.
             </p>

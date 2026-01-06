@@ -21,16 +21,21 @@ export function Header() {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link 
-            to="/" 
-            className="text-2xl font-semibold tracking-tight text-foreground hover:text-accent transition-colors duration-base"
-          >
-            <img src="../../../public/favicon.ico" alt="Logo" style={{
-              width: "32px",
-              height: "auto",
-              objectFit: "contain"
-            }} />
-          </Link>
+       <Link 
+  to="/" 
+  className="text-2xl font-semibold tracking-tight text-foreground hover:text-accent transition-colors duration-base"
+>
+  <img
+    src="/favicon.ico"
+    alt="Logo"
+    style={{
+      width: "32px",
+      height: "auto",
+      objectFit: "contain",
+    }}
+  />
+</Link>
+
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">

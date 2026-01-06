@@ -96,20 +96,25 @@ export default function HowItWorks() {
           </div>
 
           {/* CTA */}
-          <div className="max-w-2xl mx-auto text-center mt-20 p-12 rounded-3xl bg-primary text-primary-foreground">
-            <h3 className="text-2xl md:text-3xl font-medium mb-4">
-              Ready to get started?
-            </h3>
-            <p className="text-primary-foreground/70 mb-8">
-              Apply for membership and experience the freedom of delegation.
-            </p>
-            <Button asChild variant="gold" size="xl">
-              <Link to="/contact">
-                Request Access
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
+<div className="max-w-2xl mx-auto text-center mt-20 p-12 rounded-3xl bg-primary text-primary-foreground">
+  <h3 className="text-2xl md:text-3xl font-medium mb-4">
+    Ready to get started?
+  </h3>
+  <p className="text-primary-foreground/70 mb-8">
+    Apply for membership and experience the freedom of delegation.
+  </p>
+  <a 
+    href="https://wa.me/919633540152?text=Hi%2C%20I%27d%20like%20to%20apply%20for%20X9%20membership" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <Button variant="gold" size="xl" className="group">
+      Apply membership
+      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
+    </Button>
+  </a>
+</div>
+
         </div>
       </section>
     </Layout>
