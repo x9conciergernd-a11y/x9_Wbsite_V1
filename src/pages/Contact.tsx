@@ -34,7 +34,7 @@ const handleSubmit = async (e: React.FormEvent) => {
   try {
     await emailjs.send(
       "service_dyhaqzj",   // SERVICE ID
-      "template_w4s1ebf",     // TEMPLATE ID
+      "template_w4s1ebf",    // TEMPLATE ID
       {
         name: formData.name,
         email: formData.email,
