@@ -4,8 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // Change this line — most important fix for Vercel root deployments
-  base: '/',   // or base: import.meta.env.BASE_URL if you want env flexibility
+  // This is the critical change for Vercel root domain
+  base: '/',  // absolute from root — assets load from /assets/... regardless of current URL
 
   server: {
     host: "::",
