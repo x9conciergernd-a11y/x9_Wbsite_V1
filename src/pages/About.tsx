@@ -2,6 +2,8 @@ import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+
 
 const values = [
   {
@@ -25,6 +27,60 @@ const values = [
 export default function About() {
   return (
     <Layout>
+
+      <Helmet>
+        {/* Primary SEO */}
+        <title>About X9 Concierge | Private Lifestyle Management Service</title>
+        <meta
+          name="description"
+          content="Learn about X9 Concierge — a private lifestyle management and virtual assistant service built on trust, discretion, and time freedom."
+        />
+        <meta
+          name="keywords"
+          content="about x9 concierge, lifestyle concierge service, private concierge, personal assistant service, virtual assistant company"
+        />
+
+        {/* Canonical */}
+        <link
+          rel="canonical"
+          href="https://www.x9concierge.com/about"
+        />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="About X9 Concierge – Private Lifestyle Management"
+        />
+        <meta
+          property="og:description"
+          content="Discover the story, mission, and values behind X9 Concierge — a premium lifestyle management service designed to give you time freedom."
+        />
+        <meta
+          property="og:url"
+          content="https://www.x9concierge.com/about"
+        />
+        <meta property="og:site_name" content="X9 Concierge" />
+        <meta
+          property="og:image"
+          content="https://www.x9concierge.com/og/about.jpg"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="About X9 Concierge – Private Lifestyle Management"
+        />
+        <meta
+          name="twitter:description"
+          content="X9 Concierge helps busy professionals reclaim their time through trusted, human-driven lifestyle management."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.x9concierge.com/og/about.jpg"
+        />
+      </Helmet>
       {/* Hero */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">

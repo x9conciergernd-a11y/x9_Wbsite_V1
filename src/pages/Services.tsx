@@ -2,6 +2,8 @@ import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Calendar, Plane, Heart, Zap, ArrowRight } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+
 
 const services = [
   {
@@ -53,6 +55,55 @@ const services = [
 export default function Services() {
   return (
     <Layout>
+
+      <Helmet>
+  {/* Primary SEO */}
+  <title>Services | X9 Concierge – Virtual Assistant & Lifestyle Management</title>
+  <meta
+    name="description"
+    content="Explore X9 Concierge’s premium virtual assistant services including calendar management, travel planning, lifestyle support, and personal assistance tailored to your lifestyle."
+  />
+  <meta
+    name="keywords"
+    content="virtual assistant services, lifestyle concierge, personal assistant, calendar management, travel planning, executive assistant"
+  />
+
+  {/* Canonical */}
+  <link rel="canonical" href="https://www.x9concierge.com/services" />
+
+  {/* Open Graph / Facebook */}
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:title"
+    content="X9 Concierge Services – Virtual Assistant & Lifestyle Support"
+  />
+  <meta
+    property="og:description"
+    content="Delegate daily tasks and complex coordination to X9 Concierge. Premium virtual assistant and lifestyle management services designed around your needs."
+  />
+  <meta property="og:url" content="https://www.x9concierge.com/services" />
+  <meta property="og:site_name" content="X9 Concierge" />
+  <meta
+    property="og:image"
+    content="https://www.x9concierge.com/og/services.jpg"
+  />
+
+  {/* Twitter */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="X9 Concierge Services – Virtual Assistant & Lifestyle Support"
+  />
+  <meta
+    name="twitter:description"
+    content="From scheduling to travel planning, X9 Concierge provides elite virtual assistant services built for modern lifestyles."
+  />
+  <meta
+    name="twitter:image"
+    content="https://www.x9concierge.com/og/services.jpg"
+  />
+</Helmet>
+
       {/* Hero */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">

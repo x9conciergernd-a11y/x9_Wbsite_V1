@@ -7,6 +7,8 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import emailjs from "@emailjs/browser";
+import { Helmet } from "react-helmet-async";
+
 
 export default function Contact() {
   const { toast } = useToast();
@@ -63,6 +65,60 @@ const handleSubmit = async (e: React.FormEvent) => {
 
   return (
     <Layout>
+            <Helmet>
+        {/* Primary SEO */}
+        <title>Request Access | X9 Concierge – Private Lifestyle Management</title>
+        <meta
+          name="description"
+          content="Request access to X9 Concierge. Apply for premium lifestyle management and dedicated virtual assistant services. Applications reviewed within 24 hours."
+        />
+        <meta
+          name="keywords"
+          content="contact x9 concierge, request access x9, concierge service application, virtual assistant request, lifestyle management service"
+        />
+
+        {/* Canonical */}
+        <link
+          rel="canonical"
+          href="https://www.x9concierge.com/contact"
+        />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Request Access – X9 Concierge"
+        />
+        <meta
+          property="og:description"
+          content="Apply for X9 Concierge and get matched with a dedicated personal assistant. Private, discreet, and human-driven lifestyle management."
+        />
+        <meta
+          property="og:url"
+          content="https://www.x9concierge.com/contact"
+        />
+        <meta property="og:site_name" content="X9 Concierge" />
+        <meta
+          property="og:image"
+          content="https://www.x9concierge.com/og/contact.jpg"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Request Access – X9 Concierge"
+        />
+        <meta
+          name="twitter:description"
+          content="Apply for premium concierge and virtual assistant services with X9. We review every application personally."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.x9concierge.com/og/contact.jpg"
+        />
+      </Helmet>
+
       {/* Hero */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">

@@ -2,6 +2,9 @@ import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+
+
 
 const steps = [
   {
@@ -39,6 +42,62 @@ const steps = [
 export default function HowItWorks() {
   return (
     <Layout>
+            <Helmet>
+        {/* Primary SEO */}
+        <title>How X9 Works | Premium Concierge & Virtual Assistant Services</title>
+        <meta
+          name="description"
+          content="Learn how X9 Concierge works. In three simple steps, get matched with a dedicated personal assistant and start delegating tasks effortlessly."
+        />
+        <meta
+          name="keywords"
+          content="how x9 works, concierge service process, virtual assistant onboarding, lifestyle concierge, personal assistant service"
+        />
+
+        {/* Canonical */}
+        <link
+          rel="canonical"
+          href="https://www.x9concierge.com/how-it-works"
+        
+        />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="How X9 Works – Concierge & Virtual Assistant Services"
+        />
+        <meta
+          property="og:description"
+          content="Discover how X9 Concierge connects you with a dedicated assistant in three simple steps. Request access, get matched, and start delegating."
+        />
+        <meta
+          property="og:url"
+          content="https://www.x9concierge.com/how-it-works"
+        />
+        <meta property="og:site_name" content="X9 Concierge" />
+        <meta
+          property="og:image"
+          content="https://www.x9concierge.com/og/how-it-works.jpg"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="How X9 Works – Concierge & Virtual Assistant Services"
+        />
+        <meta
+          name="twitter:description"
+          content="Getting started with X9 Concierge is easy. Learn how our personal assistant service works in three simple steps."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.x9concierge.com/og/how-it-works.jpg"
+        />
+      </Helmet>
+
+
       {/* Hero */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6">
