@@ -4,35 +4,31 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // ✅ Use relative paths so Vercel serves assets correctly
-  base: "./",
+  // Change this line — most important fix for Vercel root deployments
+  base: '/',   // or base: import.meta.env.BASE_URL if you want env flexibility
 
-  // ✅ Dev server config for local development
   server: {
     host: "::",
     port: 8080,
   },
 
-  // ✅ Plugins: React SWC and optional dev plugin
   plugins: [
     react(),
     mode === "development" && componentTagger(),
   ].filter(Boolean),
 
-  // ✅ Path aliases
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
 
-  // Optional: build options for optimization
   build: {
-    outDir: "dist",       // Vercel expects this folder
-    sourcemap: mode === "development", // optional, for debugging
+    outDir: "dist",
+    sourcemap: mode === "development",
     rollupOptions: {
       output: {
-        manualChunks: undefined, // Let Vite handle code splitting automatically
+        manualChunks: undefined,
       },
     },
   },
