@@ -1,67 +1,148 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-export function HeroSection() {
+/* ---------------- TYPES ---------------- */
+type Square = {
+  id: number;
+  src: string;
+};
+
+/* ---------------- DATA ---------------- */
+const squareData: Square[] = [
+  {
+    id: 1,
+    src: "https://res.cloudinary.com/dv4psordd/image/upload/gift-boxes-with-golden-ribbon-black-friday-front-view_rywovk",
+  },
+  {
+    id: 2,
+    src: "https://res.cloudinary.com/dv4psordd/image/upload/parking-valet-taking-care-customer-vehicle_rmd4de",
+  },
+  {
+    id: 3,
+    src: "https://res.cloudinary.com/dv4psordd/image/upload/receptionists-elegant-suits-work-hours_1_qz4t9x",
+  },
+  {
+    id: 4,
+    src: "https://res.cloudinary.com/dv4psordd/image/upload/side-view-man-living-as-digital-nomad_tyuql6",
+  },
+  {
+    id: 5,
+    src: "https://res.cloudinary.com/dv4psordd/image/upload/medium-shot-middle-aged-doctor-explaining-diagnosis-via-tablet-pc_qbtk33",
+  },
+  {
+    id: 6,
+    src: "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?auto=format&fit=crop&w=1740&q=80",
+  },
+  {
+    id: 7,
+    src: "https://images.unsplash.com/photo-1599586120429-48281b6f0ece?auto=format&fit=crop&w=1740&q=80",
+  },
+  {
+    id: 8,
+    src: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=1740&q=80",
+  },
+  {
+    id: 9,
+    src: "https://images.unsplash.com/photo-1610768764270-790fbec18178?auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    id: 10,
+    src: "https://images.unsplash.com/photo-1507034589631-9433cc6bc453?auto=format&fit=crop&w=684&q=80",
+  },
+  {
+    id: 11,
+    src: "https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?auto=format&fit=crop&w=882&q=80",
+  },
+  {
+    id: 12,
+    src: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1820&q=80",
+  },
+];
+
+/* ---------------- HELPERS ---------------- */
+const shuffleArray = (array: Square[]) => {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+};
+
+/* ---------------- COMPONENTS ---------------- */
+
+const ShuffleGrid = () => {
+  const timeoutRef = useRef<number | null>(null);
+
+  const [squares, setSquares] = useState<Square[]>(() =>
+    shuffleArray(squareData)
+  );
+
+  const shuffleSquares = useCallback(() => {
+    setSquares(shuffleArray(squareData));
+    timeoutRef.current = window.setTimeout(shuffleSquares, 3000);
+  }, []);
+
+  useEffect(() => {
+    timeoutRef.current = window.setTimeout(shuffleSquares, 3000);
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [shuffleSquares]);
+
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Subtle background gradient */}
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 0%, hsl(var(--accent) / 0.15), transparent 60%)",
-        }}
-      />
+    <div className="grid grid-cols-4 grid-rows-3 h-[450px] gap-1">
+      {squares.map((sq) => (
+        <motion.div
+          key={sq.id}
+          layout
+          transition={{ duration: 1.4, type: "spring" }}
+          className="w-full h-full rounded-md"
+          style={{
+            backgroundImage: `url(${sq.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
-      <div className="container mx-auto px-6 py-24 md:py-32 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium mb-8 animate-fade-down opacity-0 stagger-1">
-            <span className="w-2 h-2 rounded-full bg-accent" />
-            Private Lifestyle Management
-          </div>
+/* ---------------- HERO SECTION ---------------- */
 
-          {/* SEO H1 */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold text-foreground leading-tight tracking-tight animate-fade-up opacity-0 stagger-2">
-            X9 Concierge – Your Personal Assistant for{" "}
-            <span className="gold-text">Everything That Matters</span>
-          </h1>
+const HeroSection = () => {
+  return (
+    <section className="w-full px-8 py-16 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
+      {/* LEFT */}
+      <div>
+       <span className="block mb-4 text-sm text-[#270e29] font-medium">
+         Redefine Time
+       </span>
 
-          {/* Subheadline */}
-          <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed animate-fade-up opacity-0 stagger-3">
-            X9 is a private lifestyle management service helping busy individuals
-            delegate travel, scheduling, events, and daily coordination with
-            complete discretion.
-          </p>
 
-          {/* CTA Buttons */}
-          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up opacity-0 stagger-4">
-            <a
-              href="https://wa.me/919633540152?text=Hi%2C%20I%20want%20to%20request%20access%20to%20X9"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="premium" size="xl" className="group">
-                Request Access
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
-              </Button>
-            </a>
+        <h1 className="text-4xl md:text-6xl font-semibold leading-tight">
+          Your Concierge for Modern Life
+        </h1>
 
-            <Button asChild variant="premium-outline" size="xl">
-              <Link to="/how-it-works">How It Works</Link>
-            </Button>
-          </div>
+        <p className="mt-6 text-base md:text-lg text-slate-600 max-w-md">
+          X9 is a private lifestyle management service designed for busy individuals who value time, discretion, and precision — seamlessly handling travel, scheduling, events, and daily coordination on your behalf.
+        </p>
 
-          {/* Trust indicator */}
-          <p className="mt-16 text-sm text-muted-foreground animate-fade-up opacity-0 stagger-5">
-            Trusted by executives, founders, and high-value individuals worldwide
-          </p>
-        </div>
+        <button className="mt-8 bg-[#270e29] text-[#efdfbb] font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-lg active:scale-95">
+         Request Access
+         </button>
+
+
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      {/* RIGHT */}
+      <ShuffleGrid />
     </section>
   );
-}
+};
+
+export default HeroSection;

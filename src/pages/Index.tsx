@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 import { Layout } from "@/components/layout/Layout";
-import { HeroSection } from "@/components/sections/HeroSection";
+import HeroSection from "@/components/sections/HeroSection";
 import { WhatIsSection } from "@/components/sections/WhatIsSection";
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
