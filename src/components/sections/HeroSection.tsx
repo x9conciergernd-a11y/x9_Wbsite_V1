@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
+import Silk from "@/components/ui/BgUi"; // Make sure this path is correct
 
 /* ---------------- TYPES ---------------- */
 type Square = {
@@ -70,7 +71,6 @@ const shuffleArray = (array: Square[]) => {
 };
 
 /* ---------------- COMPONENTS ---------------- */
-
 const ShuffleGrid = () => {
   const timeoutRef = useRef<number | null>(null);
 
@@ -113,34 +113,57 @@ const ShuffleGrid = () => {
 };
 
 /* ---------------- HERO SECTION ---------------- */
-
 const HeroSection = () => {
   return (
-    <section className="w-full px-8 py-16 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
-      {/* LEFT */}
-      <div>
-       <span className="block mb-4 text-sm text-[#270e29] font-medium">
-         Redefine Time
-       </span>
-
-
-        <h1 className="text-4xl md:text-6xl font-semibold leading-tight">
-          Your Concierge for Modern Life
-        </h1>
-
-        <p className="mt-6 text-base md:text-lg text-slate-600 max-w-md">
-          X9 is a private lifestyle management service designed for busy individuals who value time, discretion, and precision — seamlessly handling travel, scheduling, events, and daily coordination on your behalf.
-        </p>
-
-        <button className="mt-8 bg-[#270e29] text-[#efdfbb] font-medium py-3 px-6 rounded-lg transition-all duration-300 hover:scale-[1.03] hover:shadow-lg active:scale-95">
-         Request Access
-         </button>
-
-
+    <section className="relative w-full min-h-screen overflow-hidden">
+      {/* Animated Silk background */}
+      <div className="absolute inset-0 z-0">
+        <Silk
+          speed={2.5}
+          scale={1.3}
+          color="#4a1d4e"
+          noiseIntensity={1.2}
+          rotation={Math.PI / 8}
+        />
       </div>
 
-      {/* RIGHT */}
-      <ShuffleGrid />
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 z-10 bg-black/40 backdrop-blur-[2px]" />
+
+      {/* Main content */}
+      <div className="relative z-20 px-8 py-16 md:py-24 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12 min-h-screen">
+        {/* Left - Text */}
+        <div className="text-left">
+          <span className="block mb-5 text-sm uppercase tracking-wider text-[#efdfbb] font-medium opacity-90">
+            Redefine Time
+          </span>
+
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight text-white">
+            Your Concierge for Modern Life
+          </h1>
+
+          <p className="mt-8 text-lg md:text-xl text-gray-200 max-w-lg">
+            X9 is a private lifestyle management service designed for busy individuals who value time, discretion, and precision — seamlessly handling travel, scheduling, events, and daily coordination on your behalf.
+          </p>
+
+<a
+  href="https://wa.me/919633540152?text=Hi%2C%20I%20want%20to%20request%20access"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block"  // Prevents layout shifts
+>
+  <button className="mt-10 bg-[#efdfbb] text-[#270e29] font-semibold py-4 px-10 rounded-full transition-all duration-300 hover:bg-[#d4c49a] hover:shadow-2xl hover:scale-105 active:scale-95 shadow-lg">
+    Request Access
+  </button>
+</a>
+
+        </div>
+
+        {/* Right - Shuffle Grid (visible on md+ screens) */}
+        <div className="hidden md:block">
+          <ShuffleGrid />
+        </div>
+      </div>
     </section>
   );
 };

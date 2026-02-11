@@ -8,6 +8,7 @@ import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { WhyX9Section } from "@/components/sections/WhyX9Section";
 import { CTASection } from "@/components/sections/CTASection";
 
+
 const Index = () => {
   return (
     <>
