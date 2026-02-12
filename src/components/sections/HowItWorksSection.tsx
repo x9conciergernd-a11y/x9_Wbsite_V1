@@ -1,3 +1,5 @@
+"use client"; // Add this if using Next.js App Router
+import { useEffect, useState, useRef, useCallback } from "react";
 import Silk from "@/components/ui/BgUi";
 
 const steps = [
@@ -19,8 +21,26 @@ const steps = [
 ];
 
 export function HowItWorksSection() {
+  const [isInView, setIsInView] = useState(false);
+  const sectionRef = useRef(null);
+
+  const handleScroll = useCallback(() => {
+    if (!sectionRef.current) return;
+    
+    const rect = sectionRef.current.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight * 0.8 && rect.bottom > 0;
+    
+    setIsInView(isVisible);
+  }, []);
+
+  useEffect(() => {
+    handleScroll(); // Check initial position
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
   return (
-    <section className="relative w-full overflow-hidden">
+    <section ref={sectionRef} className="relative w-full overflow-hidden">
       {/* Animated Background */}
       {/* <div className="absolute inset-0 z-0">
         <Silk
@@ -51,28 +71,64 @@ export function HowItWorksSection() {
           {/* Steps */}
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-              {steps.map((step, index) => (
-                <div key={step.number} className="relative">
-                  {/* Connector line */}
-                  {index < steps.length - 1 && (
-                    <div className="hidden md:block absolute top-8 left-1/2 w-full h-px bg-white/20" />
-                  )}
+              {steps.map((step, index) => {
+                const delay = index * 400; // 0ms, 400ms, 800ms
+                
+                return (
+                  <>
+                    <style>{`
+                      @keyframes popStep${index} {
+                        0% {
+                          opacity: 0;
+                          transform: scale(0.3) translateY(3rem);
+                        }
+                        60% {
+                          opacity: 1;
+                          transform: scale(1.1);
+                        }
+                        100% {
+                          opacity: 1;
+                          transform: scale(1) translateY(0);
+                        }
+                      }
+                    `}</style>
+                    
+                    <div 
+                      key={step.number} 
+                      className="relative"
+                      style={{
+                        opacity: 0,
+                        animation: isInView 
+                          ? `popStep${index} 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay}ms forwards`
+                          : 'none',
+                        animationFillMode: 'forwards'
+                      }}
+                    >
+                      {/* Connector line */}
+                      {index < steps.length - 1 && (
+                        <div 
+                          className="hidden md:block absolute top-8 left-1/2 w-full h-px bg-white/20 origin-left"
+                          style={{
+                            opacity: 0,
+                            animation: isInView 
+                              ? `popStep${index} 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay + 600}ms forwards`
+                              : 'none',
+                            transformOrigin: 'left'
+                          }}
+                        />
+                      )}
 
-                  <div className="text-center relative z-10 group">
-                    <div className="w-16 h-16 rounded-full bg-[#efdfbb] text-[#270e29] flex items-center justify-center text-xl font-semibold mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                      {step.number}
+                      <div className="text-center relative z-10 group">
+                        <div className="w-16 h-16 rounded-full bg-[#efdfbb] text-[#270e29] flex items-center justify-center text-xl font-semibold mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                          {step.number}
+                        </div>
+                        <h3 className="text-xl font-medium text-white mb-3">{step.title}</h3>
+                        <p className="text-gray-200 leading-relaxed">{step.description}</p>
+                      </div>
                     </div>
-
-                    <h3 className="text-xl font-medium text-white mb-3">
-                      {step.title}
-                    </h3>
-
-                    <p className="text-gray-200 leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                  </>
+                );
+              })}
             </div>
           </div>
         </div>
