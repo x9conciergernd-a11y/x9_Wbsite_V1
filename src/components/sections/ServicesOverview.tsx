@@ -126,9 +126,13 @@ export function ServicesOverview() {
 
           {/* CTA */}
           <div className="text-center mt-16">
-            <Button asChild variant="premium-outline" size="lg">
-              <Link to="/services">View All Services</Link>
-            </Button>
+<Button 
+  asChild 
+  className="border border-[#efdfbb] text-[#efdfbb] hover:bg-[#efdfbb]/10 hover:border-[#efdfbb] bg-transparent size-lg"
+>
+  <Link to="/services">View All Services</Link>
+</Button>
+
           </div>
         </div>
       </div>
