@@ -7,7 +7,7 @@ import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { HowItWorksSection } from "@/components/sections/HowItWorksSection";
 import { WhyX9Section } from "@/components/sections/WhyX9Section";
 import { CTASection } from "@/components/sections/CTASection";
-
+import Silk from "@/components/ui/BgUi";
 
 const Index = () => {
   return (
@@ -28,6 +28,17 @@ const Index = () => {
 
         <link rel="canonical" href="https://yourdomain.com/" />
       </Helmet>
+
+      {/* Silk Background */}
+      <div className="fixed inset-0 -z-10">
+        <Silk
+          speed={2.5}
+          scale={1.3}
+          color="#4a1d4e"
+          noiseIntensity={1.2}
+          rotation={Math.PI / 8}
+        />
+      </div>
 
       <Layout>
         <HeroSection />

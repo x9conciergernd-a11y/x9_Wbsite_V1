@@ -4,7 +4,7 @@ export function WhatIsSection() {
   return (
     <section className="relative w-full overflow-hidden">
       {/* Background Effect */}
-      <div className="absolute inset-0 z-0">
+      {/* <div className="absolute inset-0 z-0">
         <Silk
           speed={2}
           scale={1.2}
@@ -12,7 +12,7 @@ export function WhatIsSection() {
           noiseIntensity={1}
           rotation={Math.PI / 10}
         />
-      </div>
+      </div> */}
 
       {/* Overlay */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/30 to-black/60 backdrop-blur-[2px]" />

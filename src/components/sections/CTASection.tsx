@@ -7,7 +7,7 @@ export function CTASection() {
   return (
     <section className="relative w-full overflow-hidden">
       {/* Animated Background */}
-      <div className="absolute inset-0 z-0">
+      {/* <div className="absolute inset-0 z-0">
         <Silk
           speed={2}
           scale={1.15}
@@ -15,7 +15,7 @@ export function CTASection() {
           noiseIntensity={1}
           rotation={Math.PI / 12}
         />
-      </div>
+      </div> */}
 
       {/* Overlay */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/40 to-black/70 backdrop-blur-[2px]" />
