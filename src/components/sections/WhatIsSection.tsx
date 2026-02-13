@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState, useRef, useCallback } from "react";
-import Silk from "@/components/ui/BgUi";
 
 export function WhatIsSection() {
   const [isInView, setIsInView] = useState(false);
@@ -23,16 +22,7 @@ export function WhatIsSection() {
 
   return (
     <section ref={sectionRef} className="relative w-full overflow-hidden">
-      {/* Background Effect */}
-      {/* <div className="absolute inset-0 z-0">
-        <Silk
-          speed={2}
-          scale={1.2}
-          color="#4a1d4e"
-          noiseIntensity={1}
-          rotation={Math.PI / 10}
-        />
-      </div> */}
+
 
       {/* Overlay */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/50 via-black/30 to-black/60 backdrop-blur-[2px]" />

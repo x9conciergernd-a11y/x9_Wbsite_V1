@@ -115,17 +115,17 @@ const ShuffleGrid = () => {
 /* ---------------- HERO SECTION ---------------- */
 const HeroSection = () => {
   return (
-    <section className="relative w-full min-h-screen overflow-hidden">
+    <section className="relative w-full min-h-screen overflow-hidden mt-8">
       {/* Animated Silk background */}
-      <div className="absolute inset-0 z-0">
-        <Silk
+      {/* <div className="absolute inset-0 z-0"> */}
+        {/* <Silk
           speed={2.5}
           scale={1.3}
           color="#4a1d4e"
           noiseIntensity={1.2}
           rotation={Math.PI / 8}
-        />
-      </div>
+        /> */}
+      {/* </div> */}
 
       {/* Overlay for readability */}
       <div className="absolute inset-0 z-10 bg-black/40 backdrop-blur-[2px]" />
